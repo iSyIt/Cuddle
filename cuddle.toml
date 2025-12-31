@@ -1,2 +1,4 @@
 [settings]
-steam_warning = true
+steam_warning = true # This just changes the message to change the installation arguments.
+subnautica_path = "" # Only change this is you got Subnautica from other "sources".
+[mirrors]

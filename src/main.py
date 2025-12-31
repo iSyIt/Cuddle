@@ -8,7 +8,8 @@ import tomllib
 from urllib.request import urlretrieve
 import zipfile
 import shutil
-import pynxm  # Nexus Mods API
+from pynxm import Nexus  # Nexus Mods API
+from dotenv import load_dotenv
 
 app = typer.Typer()
 console = Console()
@@ -18,11 +19,14 @@ with open("cuddle.toml", "rb") as f:
     config = tomllib.load(f)
 
 # LOGIC FOR EVERYTHING BASICALLY
+load_dotenv(dotenv_path=".env")
 operatingSystem = platform.system()
 subnauticaPath = None
 warnWineCFG = False
 steam_warning = config["settings"]["steam_warning"]
 bepinex_Address = "https://github.com/toebeann/BepInEx.Subnautica/releases/latest/download/Tobey.s.BepInEx.Pack.for.Subnautica.zip"
+api_key = os.getenv("API_KEY")
+nxm = Nexus(api_key)
 
 
 match operatingSystem:
@@ -35,10 +39,8 @@ match operatingSystem:
         subnauticaPath = "None"
         warnWineCFG = True
 
-
-@app.command()
-def listdirectories():
-    os.listdir()
+if config["settings"]["subnautica_path"] != "":
+    subnauticaPath = config["settings"]["subnauticaPath"]
 
 
 @app.command()
@@ -68,6 +70,18 @@ def uninstall():
             os.remove(file)
         elif os.path.isdir(file):
             shutil.rmtree(file)
+
+
+@app.command()
+def add(mod_id):
+    mod_data = nxm.mod_file_list("subnautica", mod_id)
+    files_list = mod_data.get("files", [])
+    if not files_list:
+        print(f"No downloadable files found for mod {mod_id}")
+        return
+    file_id = str(files_list[0]["file_id"])
+    download_url = nxm.mod_file_download_link("subnautica", mod_id, file_id)
+    print(f"Download URL: {download_url}")
 
 
 if __name__ == "__main__":
