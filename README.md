@@ -1,0 +1,91 @@
+# Cuddle
+
+The easiest mod manager there is for *Subnautica*.
+
+Cuddle installs and manages Subnautica mods using BepInEx.
+
+## Installation
+
+Make sure you have Python installed.
+
+Clone the repository and install dependencies from `requirements.txt`, then run:
+
+```bash
+python cuddle init
+```
+
+This installs BepInEx into your Subnautica folder.
+
+## Usage
+
+Get the information of a mod by ID:
+
+```bash
+python cuddle info [mod-id]
+```
+
+Remove installed mods:
+
+```bash
+python cuddle remove [mod-id]
+```
+
+Uninstall BepInEx and all related files:
+
+```bash
+python cuddle uninstall
+```
+
+## How do you get a mod’s ID?
+
+Go to the mod’s page on Nexus Mods and look at the URL:
+
+```
+www.nexusmods.com/subnautica/mods/[xxxx]
+```
+
+The `[xxxx]` part is the mod ID.
+
+## Dependencies
+
+* Python 3.10+
+* Subnautica (Steam or compatible install)
+* Internet connection (for downloading mods)
+
+## Configuration
+
+Cuddle uses a `cuddle.toml` file for configuration.
+
+Available options are:
+
+* Game install path
+* Show Linux/macOS warning.
+
+Defaults *should* work by default.
+
+## Contributing
+
+Contributions are welcome.
+
+General guidelines:
+
+* Keep dependencies minimal
+* Prefer standard library over third-party packages
+* Follow existing code style (Flake8)
+* Test changes before submitting a PR
+
+Adding support to other OSes will be really appreciated.
+
+## TODO
+
+This is ordered by necessity:
+
+* Support for all Operating Systems (by default)
+* Mod update checking
+* Get mirrors for actual `add` command.
+
+## License
+
+This project uses the MIT license, more information below.
+
+[LICENSE](LICENSE)
