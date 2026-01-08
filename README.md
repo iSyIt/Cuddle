@@ -2,7 +2,7 @@
 
 The easiest mod manager there is for *Subnautica*.
 
-Cuddle installs and manages Subnautica mods using BepInEx.
+Cuddle *installs* and manages Subnautica mods using BepInEx.
 
 ## Installation
 
@@ -18,29 +18,15 @@ This installs BepInEx into your Subnautica folder.
 
 ## Usage
 
-Get the information of a mod by ID:
-
-```bash
-python cuddle info [mod-id]
-```
-
-Remove installed mods:
-
-```bash
-python cuddle remove [mod-id]
-```
-
-Uninstall BepInEx and all related files:
-
-```bash
-python cuddle uninstall
+```fix
+python src/main.py -h
 ```
 
 ## How do you get a mod’s ID?
 
 Go to the mod’s page on Nexus Mods and look at the URL:
 
-```
+```fix
 www.nexusmods.com/subnautica/mods/[xxxx]
 ```
 
@@ -50,7 +36,7 @@ The `[xxxx]` part is the mod ID.
 
 * Python 3.10+
 * Subnautica (Steam or compatible install)
-* Internet connection (for downloading mods)
+* Internet connection (for getting information of mods)
 
 ## Configuration
 
