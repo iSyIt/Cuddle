@@ -77,3 +77,8 @@ This is ordered by necessity
 == License
 
 link:LICENSE[LICENSE]
+
+[Caution]
+====
+This is a caution message.
+====
