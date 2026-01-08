@@ -1,0 +1,5 @@
+typer
+rich
+pynxm
+python-dotenv
+requests
